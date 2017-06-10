@@ -63,6 +63,7 @@ set pastetoggle=<F2>            "toggle paste mode on and off using F2
 set incsearch                   "search as characters are entered
 set hlsearch                    "highlight search maches
 set autochdir                   "auto change to directory of current file
+set hidden                      "allow switching buffers without saving
 
 "----------------------------
 " custom key mappings
