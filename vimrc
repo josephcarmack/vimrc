@@ -41,7 +41,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 "----------------------------
-" looks options
+" my options
 "----------------------------
 set t_Co=256                    "enable 256 colors. must go before setting the color scheme
 colorscheme eldar
