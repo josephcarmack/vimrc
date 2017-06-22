@@ -20,10 +20,17 @@ Plugin 'VundleVim/Vundle.vim'
 
 " file system explorer plugin
 Plugin 'scrooloose/nerdtree'
-"sensible default vim settings
+Plugin 'jistr/vim-nerdtree-tabs'
+" sensible default vim settings
 Plugin 'tpope/vim-sensible'
-"git intergration
+" git intergration
 Plugin 'tpope/vim-fugitive'
+" easy commenting
+Plugin 'tpope/vim-commentary'
+" bracket changer
+Plugin 'tpope/vim-surround'
+" template generator
+Plugin 'aperezdc/vim-template'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -64,8 +71,51 @@ set incsearch                   "search as characters are entered
 set hlsearch                    "highlight search maches
 set autochdir                   "auto change to directory of current file
 set hidden                      "allow switching buffers without saving
+set scrolloff=8                 "start scrolling when 8 lines from the margins
+set ignorecase                  "ignore case when searching
+set smartcase                   "unless we type a capital
 
 "----------------------------
 " custom key mappings
 "----------------------------
-let mapleader=","                           "set leader key
+
+" set <Leader> key to spacebar
+let mapleader=" "
+" make tab switch windows
+nnoremap <Tab> <C-w><C-w>
+" faster tabs
+nnoremap <Leader>tn :tabnew<CR>
+nnoremap <Leader>tc :tabclose<CR>
+nnoremap <Leader>to :tabonly<CR>
+nnoremap <Leader>ts :tabnext<CR>
+" easy vsplit
+nnoremap <Leader>ws :vs<CR>
+" vimrc
+nnoremap <Leader>sv :source $MYVIMRC<CR>
+nnoremap <Leader>ev :e $MYVIMRC<CR>
+" smart indent whole file
+nnoremap <Leader>si @i<CR>
+" quick escape from insert mode
+inoremap jj <Esc>
+" faster moving in normal mode
+nnoremap <Leader>j 25j<CR>
+nnoremap <Leader>k 25k<CR>
+" load c++ templates
+nnoremap <Leader>ch :Template *.h<CR>
+nnoremap <Leader>cc :Template *.c<CR>
+" easy edit
+nnoremap <Leader>en :e 
+
+"----------------------------
+" my macros
+"----------------------------
+
+" smart indent whole file
+let @i='mv:normal gg=G``'
+
+"----------------------------
+" plugin configurations
+"----------------------------
+
+" vim-nerdtree-tabs
+let g:nerdtree_tabs_open_on_console_startup=1
