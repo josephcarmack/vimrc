@@ -86,6 +86,11 @@ set report=0                    "always report changed lines
 " custom key mappings
 "----------------------------
 
+" disable arrow keys
+noremap <left> <nop>
+noremap <right> <nop>
+noremap <up> <nop>
+noremap <down> <nop>
 " set <Leader> key to spacebar
 let mapleader=" "
 " make tab switch windows
