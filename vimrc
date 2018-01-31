@@ -58,6 +58,7 @@ set tabstop=4                   "number of visual spaces per TAB
 set expandtab                   "turn TABS into spaces
 set softtabstop=4               "number of spaces inserted when you hit the tab key
 set shiftwidth=4                "number of columns to indent when using >> and <<
+set shiftround                  " >> indents to next multiple of 'shiftwidth'
 set smarttab                    "be smart when using tabs
 set showcmd                     "show command in bottom bar
 filetype indent on              "indent based on filetype
@@ -66,6 +67,7 @@ set smartindent                 "be smart when indenting
 set wildmenu                    "visual autocomplete for command menu
 set showmatch                   "highlight matching brackets
 set lazyredraw                  "only redraw when we need to (good for macros)
+set ttyfast                     "faster redrawing
 set pastetoggle=<F2>            "toggle paste mode on and off using F2
 set incsearch                   "search as characters are entered
 set hlsearch                    "highlight search maches
@@ -74,6 +76,11 @@ set hidden                      "allow switching buffers without saving
 set scrolloff=8                 "start scrolling when 8 lines from the margins
 set ignorecase                  "ignore case when searching
 set smartcase                   "unless we type a capital
+set backspace=indent,eol,start  "make backspace work as you would expect
+set laststatus=2                "always show the status line
+set cursorline                  "find the current line quickly
+set wrapscan                    "searches wrap around end-of-file
+set report=0                    "always report changed lines
 
 "----------------------------
 " custom key mappings
@@ -92,9 +99,9 @@ nnoremap <Leader>ts :tabnext<CR>
 nnoremap <Leader>ws :vs<CR>
 " vimrc
 nnoremap <Leader>sv :source $MYVIMRC<CR>
-nnoremap <Leader>ev :e $MYVIMRC<CR>
+nnoremap <Leader>ev :tabedit $MYVIMRC<CR>
 " smart indent whole file
-nnoremap <Leader>si @i<CR>
+nnoremap <Leader>si @i
 " quick escape from insert mode
 inoremap jj <Esc>
 " faster moving in normal mode
@@ -105,6 +112,28 @@ nnoremap <Leader>ch :Template *.h<CR>
 nnoremap <Leader>cc :Template *.c<CR>
 " easy edit
 nnoremap <Leader>en :e 
+" fast global search and replace
+nnoremap <Leader>sr :%s/
+" easy macro
+nnoremap <Leader>m @q
+" turn on spell checker
+nnoremap <Leader>as :set spell spelllang=en_us<CR>
+" turn off spell checker
+nnoremap <Leader>ds :set nospell<CR>
+" go to ipython
+nnoremap <Leader>gip :!/usr/bin/ipython<CR>
+" run 'make opt' command
+nnoremap <Leader>rm :!make opt<CR>
+" run 'clear' command
+nnoremap <Leader>cc :!clear<CR>
+" turn off search highlighting
+nnoremap <Leader>nh :noh<CR>
+" fast close
+nnoremap <Leader>q :q<CR>
+" fast write
+nnoremap <Leader>w :w<CR>
+" fast c++ for loop
+nnoremap <Leader>ff @f
 
 "----------------------------
 " my macros
@@ -112,6 +141,8 @@ nnoremap <Leader>en :e
 
 " smart indent whole file
 let @i='mv:normal gg=G``'
+" insert generic c++ for loop
+let @f='ofor(size_t i=0;i<;i++)jjhhhhh'
 
 "----------------------------
 " plugin configurations
@@ -119,3 +150,7 @@ let @i='mv:normal gg=G``'
 
 " vim-nerdtree-tabs
 let g:nerdtree_tabs_open_on_console_startup=1
+
+" vim-template pluggin
+let g:username      = 'Joseph Carmack'
+let g:email         = 'joseph.liping@gmail.com'
