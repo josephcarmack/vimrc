@@ -29,8 +29,13 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
 " bracket changer
 Plugin 'tpope/vim-surround'
-" template generator
-Plugin 'aperezdc/vim-template'
+" auto completion
+Plugin 'Valloric/YouCompleteMe'
+" code snippets
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+" templates
+Plugin 'tibabit/vim-templates'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -81,6 +86,7 @@ set laststatus=2                "always show the status line
 set cursorline                  "find the current line quickly
 set wrapscan                    "searches wrap around end-of-file
 set report=0                    "always report changed lines
+set cmdheight=3                 "increase cmd line height
 
 "----------------------------
 " custom key mappings
@@ -93,13 +99,14 @@ noremap <up> <nop>
 noremap <down> <nop>
 " set <Leader> key to spacebar
 let mapleader=" "
-" make tab switch windows
-nnoremap <Tab> <C-w><C-w>
+" make leader+tab switch windows
+nnoremap <Leader><Tab> <C-w><C-w>
 " faster tabs
 nnoremap <Leader>tn :tabnew<CR>
 nnoremap <Leader>tc :tabclose<CR>
 nnoremap <Leader>to :tabonly<CR>
 nnoremap <Leader>ts :tabnext<CR>
+nnoremap <Leader>te :tabedit 
 " easy vsplit
 nnoremap <Leader>ws :vs<CR>
 " vimrc
@@ -124,7 +131,7 @@ nnoremap <Leader>m @q
 " turn on spell checker
 nnoremap <Leader>as :set spell spelllang=en_us<CR>
 " turn off spell checker
-nnoremap <Leader>ds :set nospell<CR>
+nnoremap <Leader>so :set nospell<CR>
 " go to ipython
 nnoremap <Leader>gip :!/usr/bin/ipython<CR>
 " run 'make opt' command
@@ -135,10 +142,10 @@ nnoremap <Leader>cc :!clear<CR>
 nnoremap <Leader>nh :noh<CR>
 " fast close
 nnoremap <Leader>q :q<CR>
+nnoremap <Leader>fq :q!<CR>
 " fast write
 nnoremap <Leader>w :w<CR>
-" fast c++ for loop
-nnoremap <Leader>ff @f
+nnoremap <Leader>wq :wq<CR>
 
 "----------------------------
 " my macros
@@ -146,8 +153,6 @@ nnoremap <Leader>ff @f
 
 " smart indent whole file
 let @i='mv:normal gg=G``'
-" insert generic c++ for loop
-let @f='ofor(size_t i=0;i<;i++)jjhhhhh'
 
 "----------------------------
 " plugin configurations
@@ -156,6 +161,14 @@ let @f='ofor(size_t i=0;i<;i++)jjhhhhh'
 " vim-nerdtree-tabs
 let g:nerdtree_tabs_open_on_console_startup=1
 
-" vim-template pluggin
-let g:username      = 'Joseph Carmack'
-let g:email         = 'joseph.liping@gmail.com'
+" templates 
+let g:tmpl_author_email = 'joseph.liping@gmail.com'
+let g:tmpl_author_name  = 'Joseph Carmack'
+
+" ultisnips
+let g:UltiSnipsUsePythonVersion = 3
+let g:UltiSnipsEditSplit        = 'horizontal'
+let g:UltiSnipsSnippetDir       = '~/.vim/mySnippets'
+
+" YouCompleteMe
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
