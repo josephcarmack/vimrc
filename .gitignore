@@ -1,0 +1,8 @@
+# vim
+*.swp
+
+# vundle
+bundle
+
+# spell
+spell
